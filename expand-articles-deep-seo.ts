@@ -1,4 +1,6 @@
+import "dotenv/config";
 import { getDb } from "./server/db";
+import { articles } from "./drizzle/schema";
 
 const expandedArticles = [
   {
@@ -120,24 +122,24 @@ Si aún no has probado ActiveCampaign, te recomendamos que aproveches su prueba 
   // Agregar más artículos expandidos aquí...
 ];
 
-async function expandArticles() {
+async function seed() {
   const db = await getDb();
-  if (!db) {
-    console.error("No database connection");
-    return;
-  }
+  if (!db) throw new Error("Database not available");
 
-  console.log("Expandiendo artículos con contenido SEO profundo...");
+  await db.insert(articles).values([
+    {
+      title: "Título ejemplo",
+      slug: "titulo-ejemplo",
+      excerpt: "Resumen corto",
+      content: "Contenido del artículo...",
+      authorId: 1,
+      published: 1,
+      publishedAt: new Date(),
+      views: 0, // 👈 SIEMPRE 0
+    },
+  ]);
 
-  for (const article of expandedArticles) {
-    try {
-      console.log(`✓ Actualizado: ${article.slug}`);
-    } catch (error) {
-      console.error(`✗ Error actualizando ${article.slug}:`, error);
-    }
-  }
-
-  console.log("✓ Artículos expandidos exitosamente");
+  console.log("Seed ejecutado correctamente");
 }
 
-expandArticles().catch(console.error);
+seed().then(() => process.exit(0));

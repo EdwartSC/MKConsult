@@ -1,7 +1,6 @@
-import { drizzle } from "drizzle-orm/mysql2";
+import "dotenv/config";
+import { getDb } from "./server/db";
 import { articles } from "./drizzle/schema";
-import { eq } from "drizzle-orm";
-import mysql from "mysql2/promise";
 
 const DATABASE_URL = process.env.DATABASE_URL;
 
@@ -199,32 +198,24 @@ Ambas plataformas son excelentes, pero sirven a diferentes necesidades. HubSpot 
 **Contrata una consultoría personalizada** para tomar la decisión correcta. [Agendar Consulta](#contact-form)`,
 };
 
-async function expandArticles() {
-  try {
-    console.log("Expandiendo artículos a 600+ palabras...\n");
+async function seed() {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
 
-    for (const [slug, newContent] of Object.entries(expandedArticles)) {
-      const existingArticles = await db
-        .select()
-        .from(articles)
-        .where(eq(articles.slug, slug));
+  await db.insert(articles).values([
+    {
+      title: "Título ejemplo",
+      slug: "titulo-ejemplo",
+      excerpt: "Resumen corto",
+      content: "Contenido del artículo...",
+      authorId: 1,
+      published: 1,
+      publishedAt: new Date(),
+      views: 0, // 👈 SIEMPRE 0
+    },
+  ]);
 
-      if (existingArticles.length > 0) {
-        await db
-          .update(articles)
-          .set({ content: newContent })
-          .where(eq(articles.slug, slug));
-
-        console.log(`✓ Expandido: ${slug}`);
-      }
-    }
-
-    console.log("\n✓ Artículos expandidos exitosamente");
-    process.exit(0);
-  } catch (error) {
-    console.error("Error al expandir artículos:", error);
-    process.exit(1);
-  }
+  console.log("Seed ejecutado correctamente");
 }
 
-expandArticles();
+seed().then(() => process.exit(0));

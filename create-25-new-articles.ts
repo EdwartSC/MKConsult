@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { getDb } from "./server/db";
 import { articles } from "./drizzle/schema";
 
@@ -251,35 +252,24 @@ Recuerda que el objetivo no es copiar a tus competidores, sino aprender de ellos
   // Agregar 23 artículos más aquí...
 ];
 
-async function createNewArticles() {
+async function seed() {
   const db = await getDb();
-  if (!db) {
-    console.error("No database connection");
-    return;
-  }
+  if (!db) throw new Error("Database not available");
 
-  console.log("Creando 25 nuevos artículos...");
+  await db.insert(articles).values([
+    {
+      title: "Título ejemplo",
+      slug: "titulo-ejemplo",
+      excerpt: "Resumen corto",
+      content: "Contenido del artículo...",
+      authorId: 1,
+      published: 1,
+      publishedAt: new Date(),
+      views: 0, // 👈 SIEMPRE 0
+    },
+  ]);
 
-  for (const article of newArticles) {
-    try {
-      await db.insert(articles).values({
-        title: article.title,
-        slug: article.slug,
-        category: article.category,
-        content: article.content,
-        tags: article.tags,
-        views: article.views,
-        publishedAt: new Date(),
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      });
-      console.log(`✓ Creado: ${article.slug}`);
-    } catch (error) {
-      console.error(`✗ Error creando ${article.slug}:`, error);
-    }
-  }
-
-  console.log("✓ Nuevos artículos creados exitosamente");
+  console.log("Seed ejecutado correctamente");
 }
 
-createNewArticles().catch(console.error);
+seed().then(() => process.exit(0));

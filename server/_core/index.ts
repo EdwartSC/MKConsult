@@ -3,13 +3,14 @@ import express from "express";
 import { createServer } from "http";
 import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
-import { registerOAuthRoutes } from "./oauth";
-import { appRouter } from "../routers";
+
+import { appRouter } from "../routes";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
+import { reportMistake } from "../services/email";
 
 function isPortAvailable(port: number): Promise<boolean> {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const server = net.createServer();
     server.listen(port, () => {
       server.close(() => resolve(true));
@@ -30,12 +31,26 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 async function startServer() {
   const app = express();
   const server = createServer(app);
-  // Configure body parser with larger size limit for file uploads
+
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
-  // OAuth callback under /api/oauth/callback
-  registerOAuthRoutes(app);
-  // tRPC API
+
+  app.get("/api/report-mistake", async (req, res) => {
+    const { email, name } = req.query;
+
+    if (!email || !name) {
+      return res.status(400).send("Parámetros inválidos.");
+    }
+
+    try {
+      await reportMistake(email as string, name as string);
+      res.send("Gracias por informarnos. Revisaremos el caso.");
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Error procesando solicitud.");
+    }
+  });
+
   app.use(
     "/api/trpc",
     createExpressMiddleware({
@@ -43,7 +58,7 @@ async function startServer() {
       createContext,
     })
   );
-  // development mode uses Vite, production mode uses static files
+
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
   } else {
@@ -52,10 +67,6 @@ async function startServer() {
 
   const preferredPort = parseInt(process.env.PORT || "3000");
   const port = await findAvailablePort(preferredPort);
-
-  if (port !== preferredPort) {
-    console.log(`Port ${preferredPort} is busy, using port ${port} instead`);
-  }
 
   server.listen(port, () => {
     console.log(`Server running on http://localhost:${port}/`);

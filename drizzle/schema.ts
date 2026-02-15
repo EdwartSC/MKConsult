@@ -3,15 +3,11 @@ import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-or
 /**
  * Core user table backing auth flow.
  * Extend this file with additional tables as your product grows.
- * Columns use camelCase to match both database fields and generated types.
+ * Columns use camelCase en TypeScript, pero las tablas están en snake_case.
  */
+
 export const users = mysqlTable("users", {
-  /**
-   * Surrogate primary key. Auto-incremented numeric value managed by the database.
-   * Use this for relations between tables.
-   */
   id: int("id").autoincrement().primaryKey(),
-  /** Manus OAuth identifier (openId) returned from the OAuth callback. Unique per user. */
   openId: varchar("openId", { length: 64 }).notNull().unique(),
   name: text("name"),
   email: varchar("email", { length: 320 }),
@@ -25,38 +21,40 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-// Articles table for blog content
+// ================= ARTICLES =================
+
 export const articles = mysqlTable("articles", {
   id: int("id").autoincrement().primaryKey(),
   title: varchar("title", { length: 255 }).notNull(),
   slug: varchar("slug", { length: 255 }).notNull().unique(),
-  content: text("content").notNull(), // Markdown content
-  excerpt: text("excerpt"), // Short description for listings
+  content: text("content").notNull(),
+  excerpt: text("excerpt"),
   authorId: int("authorId").notNull().references(() => users.id),
-  category: varchar("category", { length: 100 }), // e.g., "SaaS", "SEO", "Email Marketing"
-  tags: varchar("tags", { length: 500 }), // Comma-separated tags
-  featured: int("featured").default(0), // 1 for featured articles
-  published: int("published").default(0), // 1 for published, 0 for draft
+  category: varchar("category", { length: 100 }),
+  tags: varchar("tags", { length: 500 }),
+  featured: int("featured").default(0),
+  published: int("published").default(0),
   views: int("views").default(0),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-  publishedAt: timestamp("publishedAt"),
+  publishedAt: timestamp("publishedAt").defaultNow(),
 });
 
 export type Article = typeof articles.$inferSelect;
 export type InsertArticle = typeof articles.$inferInsert;
 
-// Affiliate links for tracking
-export const affiliateLinks = mysqlTable("affiliateLinks", {
+// ================= AFFILIATE LINKS =================
+
+export const affiliateLinks = mysqlTable("affiliate_links", {
   id: int("id").autoincrement().primaryKey(),
   articleId: int("articleId").notNull().references(() => articles.id),
-  program: varchar("program", { length: 100 }).notNull(), // e.g., "HubSpot", "ActiveCampaign"
-  url: text("url").notNull(), // Affiliate URL
-  displayText: varchar("displayText", { length: 255 }), // Text shown to user
-  commission: varchar("commission", { length: 50 }), // e.g., "20%", "$50/sale"
+  program: varchar("program", { length: 100 }).notNull(),
+  url: text("url").notNull(),
+  displayText: varchar("displayText", { length: 255 }),
+  commission: varchar("commission", { length: 50 }),
   clicks: int("clicks").default(0),
   conversions: int("conversions").default(0),
-  revenue: int("revenue").default(0), // in cents
+  revenue: int("revenue").default(0),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
@@ -64,12 +62,13 @@ export const affiliateLinks = mysqlTable("affiliateLinks", {
 export type AffiliateLink = typeof affiliateLinks.$inferSelect;
 export type InsertAffiliateLink = typeof affiliateLinks.$inferInsert;
 
-// Newsletter subscribers
-export const newsletterSubscribers = mysqlTable("newsletterSubscribers", {
+// ================= NEWSLETTER SUBSCRIBERS =================
+
+export const newsletterSubscribers = mysqlTable("newsletter_subscribers", {
   id: int("id").autoincrement().primaryKey(),
   email: varchar("email", { length: 320 }).notNull().unique(),
   name: varchar("name", { length: 255 }),
-  subscribed: int("subscribed").default(1), // 1 for active, 0 for unsubscribed
+  subscribed: int("subscribed").default(1),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
@@ -77,17 +76,37 @@ export const newsletterSubscribers = mysqlTable("newsletterSubscribers", {
 export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
 export type InsertNewsletterSubscriber = typeof newsletterSubscribers.$inferInsert;
 
-// Article comments
-export const articleComments = mysqlTable("articleComments", {
+// ================= ARTICLE COMMENTS =================
+
+export const articleComments = mysqlTable("article_comments", {
   id: int("id").autoincrement().primaryKey(),
   articleId: int("articleId").notNull().references(() => articles.id),
   authorName: varchar("authorName", { length: 255 }).notNull(),
   authorEmail: varchar("authorEmail", { length: 320 }).notNull(),
   content: text("content").notNull(),
-  approved: int("approved").default(0), // 1 for approved, 0 for pending
+  approved: int("approved").default(0),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
 export type ArticleComment = typeof articleComments.$inferSelect;
 export type InsertArticleComment = typeof articleComments.$inferInsert;
+
+// ================= CONTACT LEADS =================
+
+export const contactLeads = mysqlTable("contact_leads", {
+  id: int("id").autoincrement().primaryKey(),
+
+  name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 255 }).notNull(),
+  phone: varchar("phone", { length: 50 }),
+  company: varchar("company", { length: 255 }),
+
+  service: varchar("service", { length: 255 }).notNull(),
+  budget: varchar("budget", { length: 100 }),
+  timeline: varchar("timeline", { length: 100 }),
+
+  description: text("description").notNull(),
+
+  createdAt: timestamp("created_at").defaultNow(),
+});

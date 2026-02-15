@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { getDb } from "./server/db";
 import { articles } from "./drizzle/schema";
 
@@ -984,38 +985,24 @@ Comienza con la versión gratuita de cada una y elige la que mejor se adapte a t
   },
 ];
 
-async function createLaunchArticles() {
+async function seed() {
   const db = await getDb();
-  if (!db) {
-    console.error("No database connection");
-    return;
-  }
+  if (!db) throw new Error("Database not available");
 
-  console.log("Creando 5 artículos de lanzamiento...");
+  await db.insert(articles).values([
+    {
+      title: "Título ejemplo",
+      slug: "titulo-ejemplo",
+      excerpt: "Resumen corto",
+      content: "Contenido del artículo...",
+      authorId: 1,
+      published: 1,
+      publishedAt: new Date(),
+      views: 0, // 👈 SIEMPRE 0
+    },
+  ]);
 
-  for (const article of launchArticles) {
-    try {
-      await db.insert(articles).values({
-        title: article.title,
-        slug: article.slug,
-        category: article.category,
-        excerpt: article.excerpt,
-        content: article.content,
-        tags: article.tags,
-        views: article.views,
-        authorId: 1,
-        published: 1,
-        publishedAt: new Date(),
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      });
-      console.log(`✓ Creado: ${article.slug}`);
-    } catch (error) {
-      console.error(`✗ Error creando ${article.slug}:`, error);
-    }
-  }
-
-  console.log("✓ Artículos de lanzamiento creados exitosamente");
+  console.log("Seed ejecutado correctamente");
 }
 
-createLaunchArticles().catch(console.error);
+seed().then(() => process.exit(0));
