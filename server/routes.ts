@@ -104,9 +104,9 @@ export const appRouter = router({
           await sendAutoReply({
             name: input.name,
             email: input.email,
+            company: input.company,
             service: input.service,
-            budget: input.budget,
-            timeline: input.timeline,
+            description: input.description,
           });
         } catch (error) {
           console.error("Error enviando email:", error);
