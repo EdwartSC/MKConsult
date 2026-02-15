@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { appRouter } from "./routes";
 import { createContext } from "./_core/context";
+import { reportMistake } from "./services/email";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,6 +16,22 @@ async function startServer() {
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+
+  app.get("/api/report-mistake", async (req, res) => {
+    const { email, name } = req.query;
+
+    if (!email || !name) {
+      return res.status(400).send("Parámetros inválidos.");
+    }
+
+    try {
+      await reportMistake(email as string, name as string);
+      res.send("Gracias por informarnos. Revisaremos el caso.");
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Error procesando solicitud.");
+    }
+  });
 
   // ✅ tRPC API
   app.use(
