@@ -15,12 +15,9 @@ import AdminArticles from "./pages/AdminArticles";
 import Services from "./pages/Services";
 import RecommendedBooks from "./pages/RecommendedBooks";
 import ContactForm from "./pages/ContactForm";
-import LandingFacebookAds from "./pages/LandingFacebookAds";
-import LandingSEO from "./pages/LandingSEO";
-import LandingEmailMarketing from "./pages/LandingEmailMarketing";
-import LandingContentMarketing from "./pages/LandingContentMarketing";
-import LandingGoogleAds from "./pages/LandingGoogleAds";
-import LandingDigitalStrategy from "./pages/LandingDigitalStrategy";
+import ServiceStrategicConsulting from "./pages/ServiceStrategicConsulting";
+import ServiceAutomationOptimization from "./pages/ServiceAutomationOptimization";
+import ServiceTechnicalSolutions from "./pages/ServiceTechnicalSolutions";
 import FAQ from "./pages/FAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
@@ -36,12 +33,15 @@ function Router() {
         <Route path="/servicios" component={Services} />
         <Route path="/libros-recomendados" component={RecommendedBooks} />
         <Route path="/contacto" component={ContactForm} />
-        <Route path="/services/facebook-ads" component={LandingFacebookAds} />
-        <Route path="/services/seo" component={LandingSEO} />
-        <Route path="/services/email-marketing" component={LandingEmailMarketing} />
-        <Route path="/services/content-marketing" component={LandingContentMarketing} />
-        <Route path="/services/google-ads" component={LandingGoogleAds} />
-        <Route path="/services/digital-strategy" component={LandingDigitalStrategy} />
+        <Route path="/services/consultoria-estrategica-tecnologica" component={ServiceStrategicConsulting} />
+        <Route path="/services/automatizacion-optimizacion-procesos" component={ServiceAutomationOptimization} />
+        <Route path="/services/desarrollo-soluciones-tecnicas" component={ServiceTechnicalSolutions} />
+        <Route path="/services/facebook-ads" component={Services} />
+        <Route path="/services/seo" component={Services} />
+        <Route path="/services/email-marketing" component={Services} />
+        <Route path="/services/content-marketing" component={Services} />
+        <Route path="/services/google-ads" component={Services} />
+        <Route path="/services/digital-strategy" component={Services} />
         <Route path="/faq" component={FAQ} />
         <Route path="/politica-privacidad" component={PrivacyPolicy} />
         <Route path="/terminos-condiciones" component={TermsOfService} />

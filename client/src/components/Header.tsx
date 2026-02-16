@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 
 type Service = {
   name: string;
+  subtitle: string;
   href: string;
 };
 
@@ -14,12 +15,21 @@ export default function Header() {
   const [isServicesOpen, setIsServicesOpen] = useState<boolean>(false);
 
   const services: Service[] = [
-    { name: "Facebook Ads", href: "/services/facebook-ads" },
-    { name: "SEO", href: "/services/seo" },
-    { name: "Email Marketing", href: "/services/email-marketing" },
-    { name: "Content Marketing", href: "/services/content-marketing" },
-    { name: "Google Ads", href: "/services/google-ads" },
-    { name: "Estrategia Digital", href: "/services/digital-strategy" },
+    {
+      name: "Consultoría Estratégica Tecnológica",
+      subtitle: "Diagnóstico ejecutivo para decisiones tecnológicas de alto impacto.",
+      href: "/services/consultoria-estrategica-tecnologica",
+    },
+    {
+      name: "Automatización y Optimización de Procesos",
+      subtitle: "Diseño e implementación de flujos operativos más eficientes.",
+      href: "/services/automatizacion-optimizacion-procesos",
+    },
+    {
+      name: "Desarrollo y Soluciones Técnicas",
+      subtitle: "Soluciones técnicas a medida para necesidades críticas de negocio.",
+      href: "/services/desarrollo-soluciones-tecnicas",
+    },
   ];
 
   const handleClientsClick = () => {
@@ -51,14 +61,15 @@ export default function Header() {
                 <ChevronDown className="w-4 h-4" />
               </button>
 
-              <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 py-2">
+              <div className="absolute left-0 mt-0 w-[380px] bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 py-2 border border-slate-100">
                 {services.map((service) => (
                   <Link
                     key={service.href}
                     href={service.href}
-                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                    className="block px-4 py-3 hover:bg-blue-50"
                   >
-                    {service.name}
+                    <p className="text-sm font-semibold text-slate-900">{service.name}</p>
+                    <p className="text-xs text-slate-600 mt-1">{service.subtitle}</p>
                   </Link>
                 ))}
               </div>
@@ -119,9 +130,10 @@ export default function Header() {
                   <Link
                     key={service.href}
                     href={service.href}
-                    className="block px-8 py-2 text-gray-700 hover:bg-gray-100"
+                    className="block px-8 py-3 text-gray-700 hover:bg-gray-100"
                   >
-                    {service.name}
+                    <p className="text-sm font-semibold text-slate-900">{service.name}</p>
+                    <p className="text-xs text-slate-600 mt-1">{service.subtitle}</p>
                   </Link>
                 ))}
               </div>

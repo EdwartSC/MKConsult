@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { trpc } from "@/lib/trpc";
@@ -58,6 +58,16 @@ export default function ContactForm() {
     { value: "2-3-meses", label: "2 - 3 Meses" },
     { value: "flexible", label: "Flexible / A definir" },
   ];
+
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const preselectedService = params.get("service");
+
+    if (preselectedService && services.some((item) => item.value === preselectedService)) {
+      setFormData((prev) => ({ ...prev, service: preselectedService }));
+    }
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>

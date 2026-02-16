@@ -1,206 +1,126 @@
 import { Link } from "wouter";
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+
+const linkBase =
+  "text-slate-300/90 hover:text-blue-400 transition-colors duration-200 text-sm leading-relaxed";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      {/* Newsletter Section */}
-      <section className="bg-blue-600 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-bold mb-2">Recibe Estrategias de Marketing</h3>
-              <p className="text-blue-100">
-                Suscríbete a nuestro newsletter y recibe guías, tips y estrategias cada semana.
-              </p>
-            </div>
-            <div className="flex gap-2">
-              <Input
-                type="email"
-                placeholder="tu@email.com"
-                className="bg-white text-gray-900 px-4 py-3"
-              />
-              <Button className="bg-white text-blue-600 hover:bg-gray-100 px-8 whitespace-nowrap">
-                Suscribirse
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+    <footer className="bg-[#0f172a] text-slate-100">
+      <section className="px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-10 lg:gap-14">
+            <div className="space-y-5">
+              <div>
+                <p className="text-xs tracking-[0.16em] uppercase text-blue-400 font-semibold mb-3">
+                  MKConsult
+                </p>
+                <h3 className="text-2xl font-semibold text-white mb-3">
+                  Partner estratégico
+                  <br />
+                  técnico-operativo
+                </h3>
+                <p className="text-slate-300/90 text-sm leading-relaxed max-w-sm">
+                  Acompañamos decisiones tecnológicas de alto impacto con diagnóstico,
+                  optimización de procesos y ejecución técnica a medida.
+                </p>
+              </div>
 
-      {/* Main Footer Content */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-            {/* Company Info */}
+              <Link
+                href="/contacto"
+                className="inline-flex items-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-500 px-4 py-2.5 text-sm font-medium text-white transition-colors"
+              >
+                Solicitar Diagnóstico Estratégico
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
+
             <div>
-              <h3 className="text-white text-lg font-bold mb-4">MKConsult</h3>
-              <p className="text-gray-400 mb-4">
-                Plataforma de consultoría y educación en marketing digital para PYMES y emprendedores.
-              </p>
-              <div className="space-y-3">
-                <div className="flex items-center gap-2 text-gray-400">
-                  <Mail className="w-4 h-4" />
-                  <span>contacto@mkconsult.com</span>
+              <h4 className="text-white font-semibold mb-5">Servicios</h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/services/consultoria-estrategica-tecnologica" className={linkBase}>
+                    Consultoría Estratégica Tecnológica
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/automatizacion-optimizacion-procesos" className={linkBase}>
+                    Automatización y Optimización de Procesos
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/desarrollo-soluciones-tecnicas" className={linkBase}>
+                    Desarrollo y Soluciones Técnicas
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-semibold mb-5">Recursos</h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/servicios" className={linkBase}>
+                    Vista general de servicios
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className={linkBase}>
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/faq" className={linkBase}>
+                    Preguntas frecuentes
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contacto" className={linkBase}>
+                    Contacto
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-semibold mb-5">Información de contacto</h4>
+              <div className="space-y-4 text-sm text-slate-300/90">
+                <div className="flex items-start gap-3">
+                  <Mail className="w-4 h-4 mt-0.5 text-blue-400" />
+                  <div>
+                    <p className="text-slate-200 font-medium">Correo</p>
+                    <p>contacto@mkconsult.tech</p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 text-gray-400">
-                  <Phone className="w-4 h-4" />
-                  <span>+1 (555) 123-4567</span>
+
+                <div className="flex items-start gap-3">
+                  <Phone className="w-4 h-4 mt-0.5 text-blue-400" />
+                  <div>
+                    <p className="text-slate-200 font-medium">Atención</p>
+                    <p>Lunes a viernes · Agenda previa</p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 text-gray-400">
-                  <MapPin className="w-4 h-4" />
-                  <span>Online - Disponible 24/7</span>
+
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-4 h-4 mt-0.5 text-blue-400" />
+                  <div>
+                    <p className="text-slate-200 font-medium">Modalidad</p>
+                    <p>Remoto · LATAM y España</p>
+                  </div>
                 </div>
               </div>
             </div>
-
-            {/* Servicios */}
-            <div>
-              <h4 className="text-white font-bold mb-4">Servicios</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/services/facebook-ads">
-                    <div className="text-gray-400 hover:text-white transition cursor-pointer">Facebook Ads</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/seo">
-                    <div className="text-gray-400 hover:text-white transition cursor-pointer">SEO</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/email-marketing">
-                    <div className="text-gray-400 hover:text-white transition cursor-pointer">Email Marketing</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/content-marketing">
-                    <div className="text-gray-400 hover:text-white transition cursor-pointer">Content Marketing</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/google-ads">
-                    <div className="text-gray-400 hover:text-white transition cursor-pointer">Google Ads</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/digital-strategy">
-                    <div className="text-gray-400 hover:text-white transition cursor-pointer">Estrategia Digital</div>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Recursos */}
-            <div>
-              <h4 className="text-white font-bold mb-4">Recursos</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/blog">
-                    <div className="text-gray-400 hover:text-white transition cursor-pointer">Blog</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/blog">
-                    <div className="text-gray-400 hover:text-white transition cursor-pointer">Artículos</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/libros-recomendados">
-                    <div className="text-gray-400 hover:text-white transition cursor-pointer">Libros Recomendados</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/faq">
-                    <div className="text-gray-400 hover:text-white transition cursor-pointer">Preguntas Frecuentes</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contacto">
-                    <div className="text-gray-400 hover:text-white transition cursor-pointer">Contacto</div>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Legal */}
-            <div>
-              <h4 className="text-white font-bold mb-4">Legal</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/politica-privacidad">
-                    <div className="text-gray-400 hover:text-white transition cursor-pointer">Política de Privacidad</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/terminos-condiciones">
-                    <div className="text-gray-400 hover:text-white transition cursor-pointer">Términos y Condiciones</div>
-                  </Link>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-white transition">
-                    Política de Cookies
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-white transition">
-                    Aviso Legal
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
 
-          {/* Social Media */}
-          <div className="border-t border-gray-800 pt-8 mb-8">
-            <h4 className="text-white font-bold mb-4">Síguenos en Redes Sociales</h4>
-            <div className="flex gap-4">
-              <a
-                href="https://facebook.com/mkconsult"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="https://twitter.com/mkconsult"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-400 transition"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="https://linkedin.com/company/mkconsult"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="https://instagram.com/mkconsult"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
-
-          {/* Bottom Footer */}
-          <div className="border-t border-gray-800 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-gray-400 text-sm mb-4 md:mb-0">
-                © 2026 MKConsult. Todos los derechos reservados.
-              </p>
-              <p className="text-gray-400 text-sm">
-                Hecho con ❤️ para ayudarte a escalar tu negocio digital
-              </p>
+          <div className="border-t border-slate-700/60 mt-12 pt-6 flex flex-col md:flex-row justify-between gap-3 text-xs text-slate-400">
+            <p>© 2026 MKConsult. Todos los derechos reservados.</p>
+            <div className="flex items-center gap-4">
+              <Link href="/politica-privacidad" className="hover:text-blue-400 transition-colors">
+                Política de Privacidad
+              </Link>
+              <Link href="/terminos-condiciones" className="hover:text-blue-400 transition-colors">
+                Términos y Condiciones
+              </Link>
             </div>
           </div>
         </div>

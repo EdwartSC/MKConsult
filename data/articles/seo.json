@@ -1,11 +1,31 @@
 [
   {
-    "title": "Guía de seo",
-    "slug": "guia-ia",
-    "content": "Contenido...",
-    "excerpt": "Resumen...",
-    "category": "AI",
-    "tags": "ia,automatizacion",
-    "featured": 0
+    "title": "Arquitectura de contenidos orientada a decisiones",
+    "slug": "arquitectura-contenidos-orientada-decisiones",
+    "excerpt": "Cómo estructurar contenido útil para equipos comerciales, operativos y directivos.",
+    "category": "Contenido Estratégico",
+    "tags": "contenido,arquitectura,decisiones",
+    "featured": 0,
+    "coverImage": "/images/articles/arquitectura-contenidos-cover.jpg",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Una arquitectura de contenidos efectiva facilita la toma de decisiones internas y mejora la consistencia comunicacional."
+      },
+      {
+        "type": "image",
+        "src": "/images/articles/arquitectura-contenidos-diagrama.jpg",
+        "alt": "Diagrama de arquitectura de contenidos",
+        "caption": "Estructura editorial para organizaciones en crecimiento."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Definir temas por objetivo de negocio",
+          "Asignar responsables por bloque de contenido",
+          "Medir uso interno y rendimiento externo"
+        ]
+      }
+    ]
   }
 ]

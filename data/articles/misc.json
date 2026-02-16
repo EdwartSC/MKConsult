@@ -1,11 +1,31 @@
 [
   {
-    "title": "Guía de misc",
-    "slug": "guia-ia",
-    "content": "Contenido...",
-    "excerpt": "Resumen...",
-    "category": "AI",
-    "tags": "ia,automatizacion",
-    "featured": 0
+    "title": "Checklist de diagnóstico tecnológico para dirección",
+    "slug": "checklist-diagnostico-tecnologico-direccion",
+    "excerpt": "Preguntas clave para evaluar madurez tecnológica antes de invertir.",
+    "category": "Diagnóstico",
+    "tags": "diagnostico,tecnologia,direccion",
+    "featured": 0,
+    "coverImage": "/images/articles/checklist-diagnostico-cover.jpg",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Un buen diagnóstico no busca herramientas primero, sino claridad en objetivos, capacidades y restricciones operativas."
+      },
+      {
+        "type": "image",
+        "src": "/images/articles/checklist-diagnostico-matriz.jpg",
+        "alt": "Matriz de diagnóstico tecnológico",
+        "caption": "Matriz para evaluar capacidad actual y prioridades."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Qué procesos impactan mayor costo",
+          "Qué decisiones se toman sin datos confiables",
+          "Qué iniciativas requieren soporte técnico inmediato"
+        ]
+      }
+    ]
   }
 ]
