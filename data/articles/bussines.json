@@ -1,11 +1,28 @@
 [
   {
-    "title": "Guía de bussines",
-    "slug": "guia-ia",
-    "content": "Contenido...",
-    "excerpt": "Resumen...",
-    "category": "AI",
-    "tags": "ia,automatizacion",
-    "featured": 0
+    "title": "Escalabilidad operativa: señales de alerta y acciones",
+    "slug": "escalabilidad-operativa-senales-alerta",
+    "excerpt": "Identifica cuándo tu operación está frenando el crecimiento y cómo corregirlo.",
+    "category": "Operaciones",
+    "tags": "escalabilidad,procesos,gestion",
+    "featured": 0,
+    "coverImage": "/images/articles/escalabilidad-operativa-cover.jpg",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Cuándo la operación deja de acompañar el negocio",
+        "level": 2
+      },
+      {
+        "type": "paragraph",
+        "text": "Retrabajo constante, falta de trazabilidad y decisiones tardías son síntomas comunes de una operación que necesita rediseño."
+      },
+      {
+        "type": "image",
+        "src": "/images/articles/escalabilidad-operativa-tablero.jpg",
+        "alt": "Tablero de indicadores operativos",
+        "caption": "Seguimiento de cuellos de botella e incidencias."
+      }
+    ]
   }
 ]

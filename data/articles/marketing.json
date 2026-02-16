@@ -1,11 +1,36 @@
 [
   {
-    "title": "Guía de marketing",
-    "slug": "guia-ia",
-    "content": "Contenido...",
-    "excerpt": "Resumen...",
-    "category": "AI",
-    "tags": "ia,automatizacion",
-    "featured": 0
+    "title": "Estrategia digital para empresas en crecimiento",
+    "slug": "estrategia-digital-empresas-crecimiento",
+    "excerpt": "Un marco práctico para alinear tecnología, canales y procesos con objetivos de negocio.",
+    "category": "Estrategia",
+    "tags": "estrategia,digital,negocio",
+    "featured": 0,
+    "coverImage": "/images/articles/estrategia-digital-cover.jpg",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Una estrategia digital madura no depende de tácticas aisladas, sino de una hoja de ruta integrada con operación y finanzas."
+      },
+      {
+        "type": "image",
+        "src": "/images/articles/estrategia-digital-roadmap.jpg",
+        "alt": "Roadmap estratégico digital",
+        "caption": "Hoja de ruta digital por etapas y prioridades."
+      },
+      {
+        "type": "heading",
+        "text": "Componentes mínimos de una estrategia ejecutable",
+        "level": 2
+      },
+      {
+        "type": "list",
+        "items": [
+          "Diagnóstico de capacidad operativa",
+          "Priorización por impacto de negocio",
+          "Modelo de seguimiento con indicadores claros"
+        ]
+      }
+    ]
   }
 ]

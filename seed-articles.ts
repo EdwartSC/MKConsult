@@ -50,7 +50,13 @@ async function seedArticles() {
     allArticles.map((a, index) => ({
       title: a.title,
       slug: `${a.slug}-${index}`, // 🔥 evita duplicados
-      content: a.content,
+      content: JSON.stringify({
+        coverImage: a.coverImage,
+        blocks:
+          Array.isArray(a.blocks) && a.blocks.length > 0
+            ? a.blocks
+            : [{ type: "paragraph", text: a.content ?? "" }],
+      }),
       excerpt: a.excerpt ?? null,
       category: a.category ?? null,
       tags: a.tags ?? null,

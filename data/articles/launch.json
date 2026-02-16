@@ -1,11 +1,31 @@
 [
   {
-    "title": "Guía de launch",
-    "slug": "guia-ia",
-    "content": "Contenido...",
-    "excerpt": "Resumen...",
-    "category": "AI",
-    "tags": "ia,automatizacion",
-    "featured": 0
+    "title": "Lanzamientos técnicos con menor riesgo operativo",
+    "slug": "lanzamientos-tecnicos-menor-riesgo",
+    "excerpt": "Un enfoque por fases para lanzar soluciones técnicas sin interrumpir la operación.",
+    "category": "Implementación",
+    "tags": "lanzamiento,implementacion,riesgo",
+    "featured": 0,
+    "coverImage": "/images/articles/lanzamiento-tecnico-cover.jpg",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "La clave de un lanzamiento estable está en delimitar alcance, definir rollback y validar adopción por etapas."
+      },
+      {
+        "type": "image",
+        "src": "/images/articles/lanzamiento-tecnico-fases.jpg",
+        "alt": "Fases de lanzamiento técnico",
+        "caption": "Plan de implementación por hitos y validación."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Definir alcance mínimo viable",
+          "Establecer criterios de éxito",
+          "Documentar protocolos de contingencia"
+        ]
+      }
+    ]
   }
 ]

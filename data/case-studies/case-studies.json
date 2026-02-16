@@ -1,0 +1,44 @@
+[
+  {
+    "id": "cs-consultoria-01",
+    "service": "consultoria",
+    "name": "Laura Méndez",
+    "role": "CEO · Empresa de logística regional",
+    "rating": 5,
+    "summary": "Necesitaban ordenar decisiones tecnológicas y priorizar inversiones sin ampliar estructura interna.",
+    "results": [
+      "Reducción del 22% en costos operativos trimestrales",
+      "Roadmap tecnológico validado por dirección en 3 semanas",
+      "Mejora del 35% en velocidad de toma de decisiones"
+    ],
+    "image": "/images/case-studies/laura-mendez.jpg"
+  },
+  {
+    "id": "cs-automatizacion-01",
+    "service": "automatizacion",
+    "name": "Andrés Paredes",
+    "role": "COO · Startup B2B en crecimiento",
+    "rating": 5,
+    "summary": "La operación dependía de tareas manuales y procesos dispersos entre múltiples herramientas.",
+    "results": [
+      "Automatización de 9 flujos críticos en 6 semanas",
+      "Disminución del 40% en retrabajo operativo",
+      "Incremento del 28% en cumplimiento de SLA interno"
+    ],
+    "image": "/images/case-studies/andres-paredes.jpg"
+  },
+  {
+    "id": "cs-desarrollo-01",
+    "service": "desarrollo-tecnico",
+    "name": "Carolina Ruiz",
+    "role": "Directora General · Firma de servicios profesionales",
+    "rating": 4,
+    "summary": "Requerían una solución técnica a medida para centralizar operaciones y eliminar dependencias manuales.",
+    "results": [
+      "Implementación de sistema interno en fases con cero interrupciones",
+      "Reducción del 30% en tiempos de coordinación",
+      "Base escalable habilitada para nuevas unidades de negocio"
+    ],
+    "image": "/images/case-studies/carolina-ruiz.jpg"
+  }
+]

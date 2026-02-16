@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BarChart3, Cog, Wrench } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Services() {
   const services = [
     {
       title: "Consultoría Estratégica Tecnológica",
+      href: "/services/consultoria-estrategica-tecnologica",
       description:
         "Diagnóstico integral para definir decisiones tecnológicas con impacto real en objetivos de negocio.",
       icon: BarChart3,
@@ -19,6 +21,7 @@ export default function Services() {
     },
     {
       title: "Automatización y Optimización de Procesos",
+      href: "/services/automatizacion-optimizacion-procesos",
       description:
         "Mejoramos la operación con automatizaciones e integraciones orientadas a eficiencia y control.",
       icon: Cog,
@@ -32,6 +35,7 @@ export default function Services() {
     },
     {
       title: "Desarrollo y Soluciones Técnicas",
+      href: "/services/desarrollo-soluciones-tecnicas",
       description:
         "Desarrollo técnico alineado a estrategia de negocio para resolver necesidades concretas con visión a largo plazo.",
       icon: Wrench,
@@ -104,12 +108,14 @@ export default function Services() {
                     ))}
                   </ul>
 
-                  <Button
-                    variant="outline"
-                    className="w-full border-slate-300 text-slate-900 hover:bg-slate-900 hover:text-white"
-                  >
-                    Solicitar Información
-                  </Button>
+                  <Link href={service.href} className="block">
+                    <Button
+                      variant="outline"
+                      className="w-full border-slate-300 text-slate-900 hover:bg-slate-900 hover:text-white"
+                    >
+                      Ver Servicio
+                    </Button>
+                  </Link>
                 </Card>
               );
             })}
@@ -123,9 +129,11 @@ export default function Services() {
               Agenda una sesión estratégica con MKConsult y construyamos una hoja de ruta clara,
               realista y alineada con tus prioridades de negocio.
             </p>
-            <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100">
-              Solicitar Consultoría
-            </Button>
+            <Link href="/contacto">
+              <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100">
+                Solicitar Consultoría
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

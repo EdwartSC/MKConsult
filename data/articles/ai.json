@@ -1,11 +1,36 @@
 [
   {
-    "title": "Guía de IA",
-    "slug": "guia-ia",
-    "content": "Contenido...",
-    "excerpt": "Resumen...",
-    "category": "AI",
-    "tags": "ia,automatizacion",
-    "featured": 0
+    "title": "IA aplicada a operaciones: guía ejecutiva para PYMEs",
+    "slug": "ia-aplicada-operaciones-pymes",
+    "excerpt": "Cómo incorporar IA en procesos internos con criterio operativo y foco en resultados.",
+    "category": "Tecnología Estratégica",
+    "tags": "ia,operaciones,productividad",
+    "featured": 1,
+    "coverImage": "/images/articles/ia-operaciones-cover.jpg",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Por qué la IA debe empezar por la operación",
+        "level": 2
+      },
+      {
+        "type": "paragraph",
+        "text": "Antes de implementar herramientas, es clave mapear procesos críticos y detectar dónde existe mayor fricción operativa."
+      },
+      {
+        "type": "image",
+        "src": "/images/articles/ia-operaciones-mapa-procesos.jpg",
+        "alt": "Mapa de procesos para implementar IA",
+        "caption": "Diagnóstico de procesos previo a automatización con IA."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Priorizar casos de uso por impacto en costos y tiempo",
+          "Definir indicadores antes de implementar",
+          "Ejecutar pilotos acotados y medibles"
+        ]
+      }
+    ]
   }
 ]
